@@ -1,0 +1,14 @@
+name: Keep n8n Render Alive
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'  # Runs every 10 minutes
+  workflow_dispatch:        # Optional: allows manual triggering
+
+jobs:
+  ping-n8n:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Curl Render URL
+        run: |
+          curl --silent --show-error --fail https://n8n-fsfu.onrender.com > /dev/null
